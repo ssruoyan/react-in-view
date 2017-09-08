@@ -13,19 +13,20 @@ class InView extends Component {
     this.isInView = this.isInView.bind(this)
     this.check = this.check.bind(this)
 
+    this.triggerEvents = ['load', 'scroll', 'resize']
     this.elements = []
     this.current = []
   }
   componentDidMount() {
-    const { triggerEvents } = this.props
-    this.elements.push(ReactDOM.findDOMNode(this))
+    const { triggerEvents, elements } = this
 
+    elements.push(ReactDOM.findDOMNode(this))
     triggerEvents.forEach((e) => {
       window.addEventListener(e, this.check)
     })
   }
   componentWillUnmount() {
-    const { triggerEvents } = this.props
+    const { triggerEvents } = this
 
     triggerEvents.forEach((e) => {
       window.removeEventListener(e, this.check)
@@ -73,7 +74,6 @@ class InView extends Component {
 InView.propTypes = {
   onEnter: PropTypes.func,
   onLeave: PropTypes.func,
-  triggerEvents: PropTypes.array,
   thresholdX: PropTypes.number,
   thresholdY: PropTypes.number,
   offsetLeft: PropTypes.number,
@@ -89,7 +89,6 @@ InView.defaultProps = {
   offsetLeft: 0,
   offsetRight: 0,
   offsetTop: 0,
-  triggerEvents: ['scroll', 'resize']
 }
 
 export default InView;
