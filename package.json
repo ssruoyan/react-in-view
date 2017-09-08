@@ -1,5 +1,5 @@
 {
-  "name": "react-inview",
+  "name": "react-in-view",
   "version": "1.0.0",
   "description": "Add in/exit event hook when a react component enter/leave.",
   "main": "src/index.js",
