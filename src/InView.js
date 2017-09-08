@@ -59,17 +59,11 @@ class InView extends Component {
     const { thresholdY, thresholdX, offsetBottom, offsetLeft, offsetRight, offsetTop } = this.props
 
     const thresholdWidth = thresholdX * rect.width, thresholdHeight = thresholdY * rect.height
-    const section = {
-      top: rect.bottom,
-      bottom: window.innerHeight - rect.top,
-      left: rect.right,
-      right: window.innerWidth - rect.left,
-    }
     
-    return section.top > offsetTop + thresholdHeight
-      && section.bottom > offsetBottom + thresholdHeight
-      && section.left > offsetLeft + thresholdWidth
-      && section.right > offsetRight + thresholdWidth
+    return rect.bottom > offsetTop + thresholdHeight
+      && window.innerHeight - rect.top > offsetBottom + thresholdHeight
+      && rect.right > offsetLeft + thresholdWidth
+      && window.innerWidth - rect.left > offsetRight + thresholdWidth
   }
   render() {
     return this.props.children

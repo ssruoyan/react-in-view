@@ -15,7 +15,7 @@ const server = new webpackDevServer(compiler, {
   publicPath: '/',
 })
 
-server.listen(3000, '0.0.0.0', function(err) {
+server.listen(2018, '0.0.0.0', function(err) {
   if (err) {
     throw err
   }
